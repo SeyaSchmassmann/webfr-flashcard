@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: maincontent(~{::section})}">
+
+<head>
+	<title>flashcard</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+	<section>
+		<a class="btn btn-success float-end" th:href="@{/questionnaires} + '?form'">
+			Add Questionnaire
+		</a>
+		<h3>Questionnaires</h3>
+		<div th:if="${questionnaires.isEmpty()}">
+			<h2 style="text-align: center">No Questionnaires found</h2>
+		</div>
+		<div style="padding-top: 10px;">
+			<table class="table table-condensed table-hover">
+				<tbody>
+					<tr th:each="questionnaire : ${questionnaires}">
+						<td colspan="1" style="vertical-align: middle;" th:text="${questionnaire.id}" />
+						<td colspan="3" style="vertical-align: middle;" th:text="${questionnaire.title}" />
+						<td colspan="10" style="vertical-align: middle;" th:text="${questionnaire.description}" />
+						<td>
+                            <div class="btn-group float-end" role="group">
+                                <a class="btn btn-secondary" th:href="@{/questionnaires} + '/' + ${questionnaire.id}">Show</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+</body>
+
+</html>
