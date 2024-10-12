@@ -9,7 +9,8 @@
 
 <body>
     <section style="width: 60%; margin-left: 10em">
-        <form th:action="@{/questionnaires}" th:object="${questionnaire}" method="post">
+        <form th:action="@{/questionnaires/} + ${questionnaire.id}" th:object="${questionnaire}" method="post">
+            <input type="hidden"  name="_method" value="PUT" />
             <div class="mb-3 row">
                 <label class="col-md-2" for="title">Title:</label>
                 <div class="col-md-10">

@@ -8,7 +8,7 @@
 
 <body>
 	<section>
-		<a class="btn btn-success float-end" th:href="@{/questionnaires} + '?form'">
+		<a class="btn btn-success float-end" th:href="@{/questionnaires/create}">
 			Add Questionnaire
 		</a>
 		<h3>Questionnaires</h3>
@@ -23,8 +23,13 @@
 						<td colspan="3" style="vertical-align: middle;" th:text="${questionnaire.title}" />
 						<td colspan="10" style="vertical-align: middle;" th:text="${questionnaire.description}" />
 						<td>
-                            <div class="btn-group float-end" role="group">
-                                <a class="btn btn-secondary" th:href="@{/questionnaires} + '/' + ${questionnaire.id}">Show</a>
+                            <div class="btn-group float-end " role="group">
+                                <a class="btn btn-primary" th:href="@{/questionnaires/} + ${questionnaire.id} + '/edit'">Edit</a>
+                                <form th:action="@{/questionnaires/} + ${questionnaire.id}" method="post">
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                                <a class="btn btn-secondary" th:href="@{/questionnaires/} + ${questionnaire.id}">Show</a>
 							</div>
 						</td>
 					</tr>
